@@ -27,10 +27,6 @@ jobs:
       dockerfile: project/Dockerfile
       tag: generate-docker-tags-output/tag-alpine
       tag_as_latest: false
-  - put: tracker
-    params:
-      repos:
-        - maven-resource
 
 - name: shipit
   public: true
@@ -177,9 +173,3 @@ resources:
     username: {{docker-username}}
     password: {{docker-password}}
 
-- name: tracker
-  type: tracker
-  source:
-    token: {{tracker-api-token}}
-    project_id: {{tracker-project-id}}
-    tracker_url: {{tracker-url}}
