@@ -115,7 +115,8 @@ resources:
   source:
     uri: {{maven-resource-git-uri}}
     branch: {{maven-resource-git-branch}}
-    private_key: {{git-private-key}}
+    username: ((secrets_git.username))
+    password: ((secrets_git.password))
     ignore_paths:
     - LICENSE
     - NOTICE.md
