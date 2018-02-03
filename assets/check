@@ -71,11 +71,15 @@ else
   metadataUrl="$url/${groupId//.//}/$artifactId/maven-metadata.xml"
 fi
 
-metadata=$(curl --fail --silent --show-error $cert $auth $metadataUrl)
-if [ $? -ne 0 ]; then
-  echo "[ERROR] failed to download maven-metadata.xml from: $metadataUrl"
-  exit 2
-fi
+(
+  set +e
+  metadata=$(curl --fail --silent --show-error $cert $auth $metadataUrl)
+
+  if [ $? -ne 0 ]; then
+    echo '[]' >&3
+    exit 0
+  fi
+)
 
 declare -a versions=( )
 if [[ "$version" = *-SNAPSHOT ]]; then
