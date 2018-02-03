@@ -144,7 +144,8 @@ resources:
     uri: {{maven-resource-semver-git-uri}}
     branch: {{maven-resource-semver-git-branch}}
     file: version
-    private_key: {{git-private-key}}
+    username: ((secrets_git.username))
+    password: ((secrets_git.password))
 
 - name: maven-resource-image-rc-alpine
   type: docker-image
